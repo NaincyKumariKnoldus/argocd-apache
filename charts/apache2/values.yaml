@@ -14,7 +14,7 @@ deployment:
   podspec:
     containers:
       name: apache2
-      image: dipayanp007/nginx-se:v1.0.5
+      image: ubuntu/apache2
       containerPort: 80
       imagePullPolicy: IfNotPresent
 service:
