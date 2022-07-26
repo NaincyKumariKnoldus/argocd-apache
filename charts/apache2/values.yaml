@@ -1,0 +1,27 @@
+deployment:
+  replicas: 4
+  labels:
+    application: apache2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    # type: Recreate
+  labels:
+    application: apache2
+    chart: helm
+  podspec:
+    containers:
+      name: apache2
+      image: dipayanp007/nginx-se:v1.0.5
+      containerPort: 80
+      imagePullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  ports:
+    name: traffic
+    port: 80
+    targetPort: 80
+    nodePort: ""
+    protocol: TCP
